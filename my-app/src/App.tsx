@@ -1,15 +1,15 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
+import NovoComponente from './NovoComponente'
+
 
 function App() {
   return (
     <div>
-      <h1>Reangula-me</h1>
+      <NovoComponente />
     </div>
   );
 }
 
-function Cenas(): String{
-  return '';
-}
 export default App;

@@ -1,32 +1,36 @@
-import { of, Observable } from 'rxjs';
+import { of, take,  Observable, BehaviorSubject } from 'rxjs';
 //import { of, map } from 'rxjs/operators';
 
-export class TodoService{
+export class TodoService {
 
-    todos: Array<any>;
-
-    constructor(){ // private handler
-        this.todos = [{id: 1,desc:"sim", done: false},{id: 2,desc:"nao", done: false}]
+    todos: BehaviorSubject<Array<any>>;
+    list: Array<any>;
+    
+    initialValue: any = [{id: 1,desc:"comer fruta", done: true},{id: 2,desc:"da tua mae", done: false}]
+    
+    constructor() {
+        this.todos = new BehaviorSubject(this.initialValue)
+        this.list = this.initialValue
     }
+
     getTodos(): Observable<any>{
-        return of(this.todos)
+        return this.todos;
     }
     
-    toggleTodo(key: number): Observable<any>{
-        this.todos = this.todos.map(({id, desc, done})=>{
-            if(id === key){
-                return {
-                    id,
-                    desc,
-                    done: !done
-                }
-            }
-            return {
+    toggleTodo(key: number): void {
+        console.log(`I was toggled! [${key}]`);
+        
+        const current = this.todos.asObservable().pipe(take(1)).subscribe(cada => {
+            const changed = cada.map(({ id, desc, done }) => ({
                 id,
                 desc,
-                done
-            }
-        })
-        return of(this.todos)
+                done: key === id ? !done : done,
+            }));
+            this.todos.next(changed);
+        });
+        
+
+        console.log(this.todos);
     }
 }
+
