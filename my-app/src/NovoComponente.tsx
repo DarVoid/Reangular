@@ -1,16 +1,17 @@
 import { Component } from "react";
-import { Subject, Subscription } from "rxjs";
+import {  Subscription } from "rxjs";
 import { TodoService } from "./services/todoService";
+import Axios from "./lib/http/Axios";
 
 export default class NovoComponente extends Component {
-    
-    //private todoService: TodoService;
+
+    private todoService: TodoService;
 
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
-    constructor(private todoService: TodoService, props: any) {
+    constructor(props: any) {
         super(props);
 
-        this.todoService = new TodoService();
+        this.todoService = new TodoService(new Axios());
     }
     
     state = {
@@ -27,7 +28,6 @@ export default class NovoComponente extends Component {
             )
         });
     }
-    
 
     render() {
         return (
@@ -42,7 +42,9 @@ export default class NovoComponente extends Component {
                     </li>) }
 
                 </ul>
-                
+                <button onClick={ () => this.todoService.postsTodoOnline() }>
+                    Yeet 'em
+                </button>
             </div>
         );
     }

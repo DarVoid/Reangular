@@ -1,4 +1,5 @@
-import { take, tap,of, Observable, BehaviorSubject } from 'rxjs';
+import { take, tap, Observable, BehaviorSubject } from 'rxjs';
+import HttpClient from '../contracts/HttpClient';
 
 interface Todo {
     id: Number;
@@ -16,12 +17,12 @@ export class TodoService {
         { id: 2, description: "da tua mae", done: false },
     ];
     
-    constructor() {
+    constructor(private http: HttpClient) {
         this.todos = new BehaviorSubject(this.initialValue);
         this.list = this.initialValue;
     }
 
-    getTodos(): Observable<any>{
+    getTodos(): Observable<any> {
         return this.todos;
     }
     
@@ -42,7 +43,7 @@ export class TodoService {
         });
     }
 
-    postsTodoOnline(): Observable<any>{
-        return of()
+    postsTodoOnline(): Observable<any> {
+        return this.http.post("/api/todos");
     }
 }
