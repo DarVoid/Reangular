@@ -33,7 +33,7 @@ export class TodoService {
     }
     
     toggleTodo(todoId: Number): void {       
-        const current = this.todos.pipe(
+        this.todos.pipe(
             take(1),
             tap(antes => {
                 console.log("antes: ", antes);
