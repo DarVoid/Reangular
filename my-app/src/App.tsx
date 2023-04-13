@@ -6,7 +6,7 @@ import NovoComponente from './NovoComponente'
 
 function App() {
   return (
-    <div>
+    <div className='w-full h-screen overflow-hidden bg-gray-100 text-gray-900'>
       <NovoComponente />
     </div>
   );

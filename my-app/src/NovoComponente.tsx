@@ -31,18 +31,18 @@ export default class NovoComponente extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Todo</h1>
-                <ul>
-                    { this.state.todos.map(todo => <li>
-                        <button onClick={ () => this.todoService.toggleTodo(todo.id) }>
-                            [{todo.status ? "✔️": "❌"}]
+            <div className="px-16 py-4">
+                <h1 className="font-bold tracking-tight text-3xl">Todo</h1>
+                <ul className="mt-4">
+                    { this.state.todos.map(todo => <li className="my-1 flex items-center justify-start gap-2">
+                        <button className="bg-white border-2 hover:bg-gray-300 border-gray-500 w-8 h-8 rounded-lg" onClick={ () => this.todoService.toggleTodo(todo.id) }>
+                            {todo.status ? "✔️": "❌"}
                         </button>
-                        { todo.title }
+                        <span>{ todo.title }</span>
                     </li>) }
 
                 </ul>
-                <button onClick={ () => this.todoService.fetchPostsFromServer() }>
+                <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-blue-100 text-sm font-bold tracking-tight px-6 py-2 rounded-full" onClick={ () => this.todoService.fetchPostsFromServer() }>
                     Yeet 'em
                 </button>
             </div>
