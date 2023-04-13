@@ -29,6 +29,10 @@ export default class NovoComponente extends Component {
         });
     }
 
+    componentWillUnmount(): void {
+        this.state.todoSub.unsubscribe();
+    }
+
     render() {
         return (
             <div className="px-16 py-4">
