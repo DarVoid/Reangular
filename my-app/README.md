@@ -15,9 +15,3 @@ To compile CSS
 npm run css
 ```
 
-If you're feeling adventurous
-```
-npm run eject
-```
-
-pls don't hate me, react just sucks by itself
