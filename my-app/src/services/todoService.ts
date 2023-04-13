@@ -10,7 +10,6 @@ interface Todo {
 export class TodoService {
     
     todos: BehaviorSubject<Array<Todo>>;
-    list: Array<Todo>;
     
     initialValue: Array<Todo> = [
         { id: 1, title: "Comer fruta", status: true },
@@ -25,7 +24,6 @@ export class TodoService {
     
     constructor(private http: HttpClient) {
         this.todos = new BehaviorSubject(this.initialValue);
-        this.list = this.initialValue;
     }
 
     getTodos(): Observable<any> {
