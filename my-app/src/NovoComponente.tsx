@@ -19,22 +19,25 @@ export default class NovoComponente extends Component {
     }
 
     componentDidMount(): void {
-        this.setState({
+        this.setState({ 
             todoSub: this.todoService.getTodos().subscribe(
                 (todos: any) => {
-                    console.log(todos);
                     this.setState({todos});
                 }
             )
         });
     }
     
+
     render() {
         return (
             <div>
                 <h1>Todo</h1>
                 <ul>
-                    { this.state.todos.map(todo => <li><button onClick={ () => this.todoService.toggleTodo(todo.id) } >[{todo.done ? "✔️": "❌"}]</button> { todo.desc } </li>) }
+                    { this.state.todos.map(todo => <li>
+                        <button onClick={ () => this.todoService.toggleTodo(todo.id) } >[{todo.done ? "✔️": "❌"}]</button>
+                        { todo.description }
+                    </li>) }
 
                 </ul>
                 
