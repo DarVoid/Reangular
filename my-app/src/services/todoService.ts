@@ -49,7 +49,11 @@ export class TodoService {
             .pipe(take(1))
             .subscribe(res => {
                 console.log(res)
-                this.todos.next(res.map((a: any) => ({ id: a.id, status: a.status === "done", title: a.title })));
+                this.todos.next(res.map((a: any) => ({
+                    id: a.id,
+                    status: a.status === "done",
+                    title: a.title
+                } as Todo)));
             });
 
     }
