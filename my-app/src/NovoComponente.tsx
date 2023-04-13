@@ -4,17 +4,17 @@ import { TodoService } from "./services/todoService";
 
 export default class NovoComponente extends Component {
     
-    private todoService: TodoService;
+    //private todoService: TodoService;
 
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
-    constructor(props: any) {
+    constructor(private todoService: TodoService, props: any) {
         super(props);
 
         this.todoService = new TodoService();
     }
     
     state = {
-        todoSub:  new Subscription() as Subscription,
+        todoSub: new Subscription() as Subscription,
         todos: [] as Array<any>,
     }
 
@@ -35,7 +35,9 @@ export default class NovoComponente extends Component {
                 <h1>Todo</h1>
                 <ul>
                     { this.state.todos.map(todo => <li>
-                        <button onClick={ () => this.todoService.toggleTodo(todo.id) } >[{todo.done ? "✔️": "❌"}]</button>
+                        <button onClick={ () => this.todoService.toggleTodo(todo.id) }>
+                            [{todo.done ? "✔️": "❌"}]
+                        </button>
                         { todo.description }
                     </li>) }
 

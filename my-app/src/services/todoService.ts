@@ -7,7 +7,7 @@ interface Todo {
 }
 
 export class TodoService {
-
+    
     todos: BehaviorSubject<Array<Todo>>;
     list: Array<Todo>;
     
@@ -46,4 +46,3 @@ export class TodoService {
         return of()
     }
 }
-
