@@ -13,8 +13,14 @@ export class TodoService {
     list: Array<Todo>;
     
     initialValue: Array<Todo> = [
-        { id: 1, title: "comer fruta", status: true },
-        { id: 2, title: "da tua mae", status: false },
+        { id: 1, title: "Comer fruta", status: true },
+        { id: 2, title: "Beber leite", status: false },
+        { id: 3, title: "Chorar em espanhol", status: false },
+        { id: 4, title: "1. Cereais", status: true },
+        { id: 5, title: "2. Leite", status: false },
+        { id: 6, title: "3. Taça", status: false },
+        { id: 7, title: "4. Garfo", status: false },
+        { id: 8, title: "Dispose of the body", status: false },
     ];
     
     constructor(private http: HttpClient) {
