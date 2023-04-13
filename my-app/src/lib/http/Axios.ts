@@ -1,13 +1,20 @@
 import { Observable, from, of } from "rxjs";
 import HttpClient from "../../contracts/HttpClient";
-import { Axios } from 'axios';
+import axios from 'axios';
+import {Axios} from 'axios';
+
+import { map } from "rxjs/operators";
+import config from '../../config/http';
 
 export default class AxiosClient implements HttpClient {
 
-    axios: Axios;
+    client: Axios;
 
-    constructor() {
-        this.axios = new Axios();
+    constructor() { //config: Config // add dependency injection?
+        this.client = axios.create({
+            headers: {'X-Sent-By': 'Reangular'},
+            baseURL: config.baseURL,
+        });
     }
 
     header(key: string, value?: string | undefined): HttpClient {
@@ -15,7 +22,7 @@ export default class AxiosClient implements HttpClient {
     }
 
     get(url: string, params?: any): Observable<any> {
-        throw new Error("Method not implemented.");
+        return from(this.client.get(url)).pipe(map(res => res.data));
     }
 
     put(url: string, body?: any, params?: any): Observable<any> {
@@ -23,9 +30,7 @@ export default class AxiosClient implements HttpClient {
     }
 
     post(url: string, body?: any, params?: any): Observable<any> {
-        console.log(url)
-        this.axios.post(url);
-        return of("");
+        return from(this.client.post(url));
     }
 
     patch(url: string, body?: any, params?: any): Observable<any> {

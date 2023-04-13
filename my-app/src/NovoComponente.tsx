@@ -36,13 +36,13 @@ export default class NovoComponente extends Component {
                 <ul>
                     { this.state.todos.map(todo => <li>
                         <button onClick={ () => this.todoService.toggleTodo(todo.id) }>
-                            [{todo.done ? "✔️": "❌"}]
+                            [{todo.status ? "✔️": "❌"}]
                         </button>
-                        { todo.description }
+                        { todo.title }
                     </li>) }
 
                 </ul>
-                <button onClick={ () => this.todoService.postsTodoOnline() }>
+                <button onClick={ () => this.todoService.fetchPostsFromServer() }>
                     Yeet 'em
                 </button>
             </div>
