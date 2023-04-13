@@ -9,6 +9,5 @@ export default interface HttpClient {
     post(url:string, body?:any, params?: any): Observable<any>,
     patch(url:string, body?:any, params?: any): Observable<any>,
     delete(url:string, params?: any): Observable<any>,
-    
 
 };
