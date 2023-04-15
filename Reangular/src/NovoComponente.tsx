@@ -1,5 +1,5 @@
 import { Component } from "react";
-import {  Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 import { TodoService } from "./services/todoService";
 import Axios from "./lib/http/Axios";
 
@@ -46,7 +46,8 @@ export default class NovoComponente extends Component {
                     </li>) }
 
                 </ul>
-                <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-blue-100 text-sm font-bold tracking-tight px-6 py-2 rounded-full" onClick={ () => this.todoService.fetchPostsFromServer() }>
+                <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-blue-100 text-sm font-bold tracking-tight px-6 py-2 rounded-full"
+                onClick={ () => this.todoService.fetchPostsFromServer() }>
                     Yeet 'em
                 </button>
             </div>
