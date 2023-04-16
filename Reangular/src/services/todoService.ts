@@ -1,4 +1,4 @@
-import { take, tap, Observable, BehaviorSubject } from 'rxjs';
+import { take, tap, Observable, BehaviorSubject, interval, map } from 'rxjs';
 import HttpClient from '../contracts/HttpClient';
 
 interface Todo {
@@ -27,6 +27,7 @@ export class TodoService {
     }
 
     getTodos(): Observable<any> {
+
         return this.todos;
     }
     
